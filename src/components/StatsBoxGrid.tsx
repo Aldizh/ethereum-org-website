@@ -405,10 +405,10 @@ const StatsBoxGrid: React.FC<IProps> = () => {
 
     const fetchNodes = async (): Promise<void> => {
       try {
-        const { result } = await getData<IFetchNodeResponse>(
+        const response = await getData<IFetchNodeResponse>(
           `${GATSBY_FUNCTIONS_PATH}/etherscan`
         )
-        const data = result
+        const data = response
           .map(({ UTCDate, TotalNodeCount }) => ({
             timestamp: new Date(UTCDate).getTime(),
             value: Number(TotalNodeCount),
